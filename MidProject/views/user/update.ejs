@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Update Info </title>
+</head>
+<body>
+	<form method="post">
+		<fieldset>
+			<legend>Update Info</legend>
+			<table>
+				<tr>
+					<td>ID</td>
+					<td><input type="id" name="id" value="<%= users.id %>"></td>
+				</tr>
+				<tr>
+					<td>Username</td>
+					<td><input type="text" name="username" value="<%= users.username %>"></td>
+				</tr>
+				<tr>
+					<td>Password</td>
+					<td><input type="password" name="password" value="<%= users.password %>"></td>
+				</tr>
+				<tr>
+					<td>Contact Number</td>
+					<td><input type="text" name="contactno" value="<%= users.contactno %>"></td>
+				</tr>
+				<tr>
+					<td></td>
+					<td><input type="submit" name="submit" value="Update"></td>
+				</tr>
+			</table>
+		</fieldset>
+	</form>
+</body>
+</html>

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Customer List Page</title>
+</head>
+<body>
+	<h3>Customer List</h3>
+
+	<a href="/Mhome">Back</a> |
+	<a href="/logout">logout</a>
+	<br>
+
+	<table border="1">
+		<tr>
+			<td>ID</td>
+			<td>USERNAME</td>
+			<td>PASSWORD</td>
+			<td>TYPE</td>
+			<td>CONTACT_NO</td>
+		</tr>
+
+		<% for(var i=0; i< cuslist.length; i++ ){ %>
+		<tr>
+			<td><%= cuslist[i].id %></td>
+			<td><%= cuslist[i].username %></td>
+			<td><%= cuslist[i].password %></td>
+			<td><%= cuslist[i].type %></td>
+			<td><%= cuslist[i].contactno %></td>
+			<td>
+				<a href="">Edit</a> | 
+				<a href="">Delete</a>  
+			</td>
+		</tr>
+		<% } %>
+	</table>
+</body>
+</html>

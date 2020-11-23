@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Employee List Page</title>
+</head>
+<body>
+	<h3>Employee List</h3>
+
+	<a href="/Mhome">Back</a> |
+	<a href="/logout">logout</a>
+	<br>
+	<br>
+
+	<table border="1">
+		<tr>
+			<td>ID</td>
+			<td>USERNAME</td>
+			<td>Salary</td>
+			<td>Date</td>
+		</tr>
+
+		<% for(var i=0; i< emplist.length; i++ ){ %>
+		<tr>
+			<td><%= emplist[i].id %></td>
+			<td><%= emplist[i].username %></td>
+			<td><%= emplist[i].salary %></td>
+			<td><%= emplist[i].date %></td>
+			
+		<% } %>
+	</table>
+</body>
+</html>

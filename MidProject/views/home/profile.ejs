@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Profile Info</title>
+</head>
+<body>
+	<form method="post">
+		<fieldset>
+			<legend>Profile Information</legend>
+			<table>
+				<tr>
+					<td>Username :</td>
+				    <td><%= users.username %></td>
+				</tr>
+
+				<tr>
+				    <td>Password :</td>
+				    <td><%= users.password %></td>
+			    </tr>
+
+			    <tr>
+				    <td>Type :</td>
+				    <td><%= users.type %></td>
+			    </tr>
+
+			     <tr>
+				    <td>Contact No :</td>
+				    <td><%= users.contactno %></td>
+			    </tr>
+			    <tr>
+					<td>Want to update Profile !
+					<a href="/user/update">Update</a> </td>
+				</tr>
+     
+				
+		</fieldset>
+	</form>
+</body>
+</html>

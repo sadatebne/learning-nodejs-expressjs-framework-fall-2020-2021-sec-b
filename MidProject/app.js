@@ -11,6 +11,9 @@ const app 			= express();
 const Mhome			= require('./controller/Mhome');
 const login			= require('./controller/login');
 const logout		= require('./controller/logout');
+const user		= require('./controller/user');
+
+
 
 
 
@@ -33,6 +36,7 @@ app.use(cookieParser());
 app.use('/login', login);
 app.use('/Mhome', Mhome);
 app.use('/logout', logout);
+app.use('/user', user);
 
 
 
