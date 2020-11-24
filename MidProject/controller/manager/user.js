@@ -1,7 +1,7 @@
 const express = require('express');
 const usercon	= require.main.require('./model/usercon');
 const router = express.Router();
-
+const { check, validationResult } = require('express-validator');
 
 
 router.get('/update', (req, res)=>{
@@ -47,28 +47,81 @@ router.post('/update', (req, res)=>{
 })
 
 
+
+
+
 router.get('/empAdd', (req, res)=>{
    
       res.render('manager/user/empAdd');
     
 })
-router.post('/empAdd', (req, res)=>{
 
-    var user = {
-        username :   req.body.username,
-        name     :   req.body.name,
-        password :   req.body.password,
-        type     :   req.body.type
-    };
 
-    usercon.insert(user, function(status){
-        if(status){
-            res.redirect('/Mhome');
-        }else{
-            res.redirect('manager/user/empAdd');
-        }
-    });
-})
+
+
+router.post('/empAdd',[
+    check('username', 'Invalid Username') 
+    .isLength({ min: 5, max: 8 }), 
+     check('name', 'Name length should be 5 to 20 characters').matches(/^[A-Za-z\s]+$/)
+    .isLength({ min: 5}),       
+   check('password', 'Password length should be 5 to 10 characters') 
+    .isLength({ min: 5, max: 10 }),
+     check('type', 'User Type Must be Employee').equals("Employee").isLength({ min: 5, max: 8 }),
+], (req, res)=>{
+
+    const errors = validationResult(req);
+
+    if (!errors.isEmpty()) { 
+       
+            res.json(errors) 
+     } 
+  
+    // If no error occurs, then this 
+    // block of code will run 
+    else { 
+      
+            var user=
+            {
+                username: req.body.username,
+                name: req.body.name,
+                password: req.body.password,
+                type: req.body.type
+                
+              
+        
+            };
+            usercon.validate2(user,(type) => {
+                if ( type == req.body.username ) {
+                    res.send("User Name Already Taken")     
+                }
+                else {
+
+                    usercon.insert(user, function(status){
+        
+                        if(status){
+                    
+                            console.log("added");
+                         
+                           
+                            res.redirect('/Mhome');
+                          
+                        }
+                        else{
+                              console.log("Error");  
+                        }
+                    });    
+                }
+            })
+           
+    
+}
+});
+
+
+
+
+
+
 
 router.get('/empDelete/:id', (req, res)=>{
     var user ={
@@ -168,3 +221,4 @@ router.post('/cusDelete/:id', (req, res)=>{
 
 
 module.exports = router;
+

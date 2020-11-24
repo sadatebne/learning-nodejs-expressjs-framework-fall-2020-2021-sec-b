@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Transaction List Page</title>
+</head>
+<body>
+	<h3>Transaction List</h3>
+
+	<a href="/Mhome">Back</a> |
+	<a href="/logout">logout</a>
+	<br>
+	<br>
+
+	<table border="1">
+		<tr>
+			<td>ID</td>
+			<td>USERNAME</td>
+			<td>SEND</td>
+			<td>RECEIVE</td>
+			<td>TOTAL BALANCE</td>
+			<td>DATE</td>
+		</tr>
+
+		<% for(var i=0; i< trnslist.length; i++ ){ %>
+		<tr>
+			<td><%= trnslist[i].id %></td>
+			<td><%= trnslist[i].username %></td>
+			<td><%= trnslist[i].send %></td>
+			<td><%= trnslist[i].receive %></td>
+			<td><%= trnslist[i].balance %></td>
+			<td><%= trnslist[i].date %></td>
+		</tr>
+		<% } %>
+	</table>
+</body>
+</html>

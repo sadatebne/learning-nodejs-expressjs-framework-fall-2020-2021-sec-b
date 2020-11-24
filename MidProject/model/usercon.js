@@ -112,5 +112,24 @@ module.exports ={
 		});
 
 	},
+
+		getAll4: function(callback){
+		var sql = "select * from transaction";
+		db.getResults(sql, function(results){
+			callback(results);
+		});
+
+	},
+	
+	validate2: function(user, callback){
+		var sql = "select * from user where UserName='"+user.username+"' and Password='"+user.password+"'";
+		db.getResults(sql, function(results){
+			if(results.length >0 ){
+				callback(results[0].UserName);
+			}else{
+				callback(false);
+			}
+		});
+	},
 	
 }

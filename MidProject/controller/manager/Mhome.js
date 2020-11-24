@@ -55,6 +55,14 @@ router.get('/empsalaryinfolist', (req, res)=>{
 
 });
 
+router.get('/transactionlist', (req, res)=>{
+
+	usercon.getAll4(function(results){
+		res.render('manager/home/transactionlist', {trnslist: results});
+	});
+
+});
+
 
 
 
