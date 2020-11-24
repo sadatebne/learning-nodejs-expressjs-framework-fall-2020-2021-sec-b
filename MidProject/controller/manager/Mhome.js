@@ -47,5 +47,15 @@ router.get('/empsalarylist', (req, res)=>{
 });
 
 
+router.get('/empsalaryinfolist', (req, res)=>{
+
+	usercon.getAll3(function(results){
+		res.render('manager/home/empsalaryinfolist', {empsallist: results});
+	});
+
+});
+
+
+
 
 module.exports = router;

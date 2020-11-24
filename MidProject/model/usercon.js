@@ -93,6 +93,24 @@ module.exports ={
 	},
 
 
+	delete2: function(user, callback){
+		var sql = "delete from empsalary where id = '"+user.id+"'";
+		db.execute(sql, function(status){
+			if(status){
+				callback(true);
+			}else{
+				callback(false);
+			}
+	
+		});
+	},
 
+		getAll3: function(callback){
+		var sql = "select * from empsalary";
+		db.getResults(sql, function(results){
+			callback(results);
+		});
+
+	},
 	
 }

@@ -90,7 +90,16 @@ router.post('/empDelete/:id', (req, res)=>{
 
     usercon.delete(user, function(status){
         if(status){
+
+    usercon.delete2(user, function(status){
+        if(status){
             res.redirect('/Mhome/emplist');
+        }
+        else{
+            console.log (Err);
+        }
+
+    });
         }else{
             res.redirect('manager/user/empDelete/:id');
         }
@@ -124,6 +133,35 @@ router.post('/empAddSalary/:id', (req, res)=>{
             res.redirect('/Mhome');
         }else{
             res.redirect('manager/user/empAddSalary');
+        }
+    });
+})
+
+router.get('/cusDelete/:id', (req, res)=>{
+    var user ={
+        id: req.params.id,   
+    };
+
+    usercon.getById2(user,function(results)
+    {
+      res.render('manager/user/cusDelete',{users: results[0]});
+
+    });
+})
+
+router.post('/cusDelete/:id', (req, res)=>{
+
+    var user = {
+       id: req.params.id, 
+    };
+
+    usercon.delete(user, function(status){
+        if(status){
+
+            res.redirect('/Mhome/cuslist');
+
+        }else{
+            res.redirect('manager/user/cusDelete/:id');
         }
     });
 })
