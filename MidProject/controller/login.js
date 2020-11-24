@@ -1,5 +1,5 @@
 const express 	= require('express');
-const userModel	= require.main.require('./model/usercon');
+const usercon	= require.main.require('./model/usercon');
 const router 	= express.Router();
 
 router.get('/', (req, res)=>{
@@ -12,7 +12,7 @@ router.post('/', (req, res)=>{
 		password: req.body.password
 	};
 
-	userModel.validate(user, function(status){
+	usercon.validate(user, function(status){
 		if(status){
 			res.cookie('uname', req.body.username);
 			res.redirect('/Mhome');	

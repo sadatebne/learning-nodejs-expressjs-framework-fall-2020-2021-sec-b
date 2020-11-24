@@ -3,10 +3,10 @@ const db = require('./db');
 module.exports ={
 
 	validate: function(user, callback){
-		var sql = "select * from user where username='"+user.username+"' and password='"+user.password+"'";
+		var sql = "select * from user where UserName='"+user.username+"' and Password='"+user.password+"'";
 		db.getResults(sql, function(results){
 			if(results.length > 0){
-				callback(results[0].type);
+				callback(results[0].UserType);
 			}else{
 				callback(false);
 			}
@@ -21,7 +21,7 @@ module.exports ={
 	},
 
 	update:function(user, callback){
-		var sql = "Update user set username = '"+user.username+"', password = '"+user.password+"', contactno ='"+user.contactno+"' where id='"+user.id+"'";
+		var sql = "Update user set UserName = '"+user.username+"', Name=  '"+user.name+"', Password = '"+user.password+"', Email = '"+user.email+"', ContactNo ='"+user.contactno+"', Gender = '"+user.gender+"', Address = '"+user.address+"' where ID='"+user.id+"'";
 		db.execute(sql, function(status){
 			if(status){
 				callback(true);
@@ -32,7 +32,7 @@ module.exports ={
 		});
 	},
 	getAll: function(callback){
-		var sql = "select * from user where type = 'Employee' ";
+		var sql = "select * from user where UserType = 'Employee' ";
 		db.getResults(sql, function(results){
 			callback(results);
 		});
@@ -42,7 +42,7 @@ module.exports ={
 		insert: function(user, callback){
 		
 		console.log(user.type);
-		var sql = "Insert into user (username,password,type) VALUES('"+user.username+"','"+user.password+"','"+user.type+"')";
+		var sql = "Insert into user (UserName,Name,Password,UserType) VALUES('"+user.username+"','"+user.name+"','"+user.password+"','"+user.type+"')";
 		db.execute(sql, function(status){
 			if(status){
 				callback(true);
@@ -65,7 +65,7 @@ module.exports ={
 	},
 
 	getAll2: function(callback){
-		var sql = "select * from user where type = 'Customer' ";
+		var sql = "select * from user where UserType = 'Customer' ";
 		db.getResults(sql, function(results){
 			callback(results);
 		});
@@ -73,7 +73,7 @@ module.exports ={
 	},
 
 	getById2: function(user, callback){
-		var sql = "select * from user where id ='"+user.id+ "'";
+		var sql = "select * from user where ID ='"+user.id+ "'";
 		db.getResults(sql, function(result){
 			callback(result);
 		});
@@ -90,14 +90,6 @@ module.exports ={
 				callback(false);
 			}
 		});
-	},
-
-		getAll3: function(callback){
-		var sql = "select * from empsalary  ";
-		db.getResults(sql, function(results){
-			callback(results);
-		});
-
 	},
 
 

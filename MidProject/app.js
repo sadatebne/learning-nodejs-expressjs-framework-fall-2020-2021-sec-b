@@ -8,10 +8,10 @@ const app 			= express();
 
 
 
-const Mhome			= require('./controller/Mhome');
+const Mhome			= require('./controller/manager/Mhome');
 const login			= require('./controller/login');
 const logout		= require('./controller/logout');
-const user		= require('./controller/user');
+const user		= require('./controller/manager/user');
 
 
 
