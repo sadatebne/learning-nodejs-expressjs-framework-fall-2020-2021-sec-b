@@ -103,7 +103,7 @@ router.post('/empAdd',[
                             console.log("added");
                          
                            
-                            res.redirect('/Mhome');
+                            res.redirect('/Mhome/emplist');
                           
                         }
                         else{
