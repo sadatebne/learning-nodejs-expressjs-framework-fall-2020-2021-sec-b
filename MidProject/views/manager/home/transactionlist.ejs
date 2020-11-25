@@ -15,7 +15,7 @@
 	<table border="1">
 		<tr>
 			<td>ID</td>
-			<td>USERNAME</td>
+			
 			<td>SEND</td>
 			<td>RECEIVE</td>
 			<td>TOTAL BALANCE</td>
@@ -24,8 +24,8 @@
 
 		<% for(var i=0; i< trnslist.length; i++ ){ %>
 		<tr>
-			<td><%= trnslist[i].id %></td>
-			<td><%= trnslist[i].username %></td>
+			<td><%= trnslist[i].tid %></td>
+			
 			<td><%= trnslist[i].send %></td>
 			<td><%= trnslist[i].receive %></td>
 			<td><%= trnslist[i].balance %></td>

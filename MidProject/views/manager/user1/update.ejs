@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Update Info </title>
+	<link rel="stylesheet" type="text/css" href="/abc/css/style.css">
+</head>
+<body>
+	<form method="post">
+		<fieldset>
+			<legend>Update Info</legend>
+
+			<a href="/Mhome">Back</a> |
+	        <a href="/logout">logout</a>
+	        <br>
+	        <br>
+			<table>
+				<tr>
+					<td>ID</td>
+					<td><input type="id" name="id" value="<%= users.ID %>"></td>
+				</tr>
+				<tr>
+					<td>Username</td>
+					<td><input type="text" name="username" value="<%= users.UserName %>"></td>
+				</tr>
+				<tr>
+					<td>Name</td>
+					<td><input type="text" name="name" value="<%= users.Name %>"></td>
+				</tr>
+				<tr>
+					<td>Password</td>
+					<td><input type="password" name="password" value="<%= users.Password %>"></td>
+				</tr>
+				<tr>
+					<td>Email</td>
+					<td><input type="email" name="email" value="<%= users.Email %>"></td>
+				</tr>
+				<tr>
+					<td>Contact Number</td>
+					<td><input type="text" name="contactno" value="<%= users.ContactNo %>"></td>
+				</tr>
+				<tr>
+					<td>Gender</td>
+					<td><input type="text" name="gender" value="<%= users.Gender %>"></td>
+				</tr>
+				<tr>
+					<td>Address</td>
+					<td><input type="text" name="address" value="<%= users.Address %>"></td>
+				</tr>
+				<tr>
+					<td></td>
+					<td><input type="submit" name="submit" value="Update"></td>
+				</tr>
+			</table>
+		</fieldset>
+	</form>
+</body>
+</html>

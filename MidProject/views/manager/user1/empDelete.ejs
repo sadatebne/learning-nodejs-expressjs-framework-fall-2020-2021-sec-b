@@ -1,14 +1,13 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Profile Info</title>
+	<title>Delete Employee</title>
 	<link rel="stylesheet" type="text/css" href="/abc/css/style.css">
 </head>
 <body>
 	<form method="post">
 		<fieldset>
-			<legend>Profile Information</legend>
-
+			<legend>Delete Employees</legend>
 			<a href="/Mhome">Back</a> |
 	        <a href="/logout">logout</a>
 	        <br>
@@ -53,14 +52,12 @@
 				    <td>Address :</td>
 				    <td><%= users.Address %></td>
 			    </tr>
-
-
-			    <tr>
-					<td>Want to update Profile !
-					<a href="/user1/update">Update</a> </td>
-				</tr>
-     
 				
+			</table>
+			<div>
+				<h3>Are you sure?</h3>
+				<input type="submit" name="submit" value="Confirm">
+			</div>
 		</fieldset>
 	</form>
 </body>

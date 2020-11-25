@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>ManagerList</title>
+  <meta charset="utf-8">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+</head>
+<body>
+
+<div class="container">  
+    <center>
+  <table border="1"  id="tbl" cellspacing="0" cellpadding="0">
+    <thead>
+      <tr>
+                    <th>Id</th>
+                    <th>Name</th>
+                    <th>User Name</th>
+          					<th>Email</th>
+          					<th>Contact No</th>
+          					<th>NID</th>
+          					<th>Gender</th>
+          					<th>User Type</th>
+                    <th>Address</th>
+                    <th>Action</th>
+      </tr>
+    </thead>
+    <tbody>
+        <% 
+        users.forEach( function(std){ %>
+        <tr>
+            <td><%= std.ID %></td>
+            <td><%= std.Name %></td>
+            <td><%= std.UserName %></td>
+            <td><%= std.Email %></td>
+            <td><%= std.ContactNO %></td>
+            <td><%= std.NID %></td>
+            <td><%= std.Gender %></td>
+            <td><%= std.UserType %></td>
+            <td><%= std.Address %></td>
+           
+            <td>
+                <a href="/user/deletemanager/<%= std.ID %>">Delete</a>
+               <!--  <a href="/user/addsalary/<%= std.ID %>">Set Salary</a> -->
+            </td>
+        </tr>
+    <%
+        }); 
+    %>
+    </tbody>
+  </table>
+  </center>
+</div>
+<br>
+<br>
+<center>
+  <a class="text-info" href="/adminhome">Back</a>
+
+   <input type="button" id="btnExport" value="Download as PDF" />
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.22/pdfmake.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/0.4.1/html2canvas.min.js"></script>
+    <script type="text/javascript">
+        $("body").on("click", "#btnExport", function () {
+            html2canvas($('#tbl')[0], {
+                onrendered: function (canvas) {
+                    var data = canvas.toDataURL();
+                    var docDefinition = {
+                        content: [{
+                            image: data,
+                            width: 500
+                        }]
+                    };
+                    pdfMake.createPdf(docDefinition).download("AdminList.pdf");
+                }
+            });
+        });
+    </script>
+
+
+</center>
+
+</body>
+</html>
+

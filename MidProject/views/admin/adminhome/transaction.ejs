@@ -1,0 +1,121 @@
+<html lang="en">
+ 
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">
+    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+    <script src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/1.10.16/js/dataTables.bootstrap4.min.js"></script>
+ 
+</head>
+ 
+<body class="bg-info">
+    <div class="container">
+        <div class="jumbotron"></div>
+    </div>
+    <div class="container">
+        <div class="ZipDatatable">
+            <table id="ZipcodesTable" class="table table-bordered table-sm">
+                <tr>
+                    <th>Transaction Id</th>
+                    <th>Sender</th>
+                    <th>Receiver</th>
+					<th>Balance</th>
+					<th>Amount</th>
+					<th>Date</th>
+					
+                </tr>
+            </thead>
+            </table>
+        </div>
+    </div>
+</body>
+<script>
+    $(document).ready(function () {
+       $('#ZipcodesTable').DataTable({
+            "paging": true,
+            "pageLength": 10,
+            "processing": true,
+            "serverSide": true,
+            "ajax": {
+                data:"json",
+                type: "get",
+                url: "/adminhome/transaction"
+            },
+                "columns":
+
+                
+                    [
+                        { data : tid },
+                        { data: sent },
+                        { data: receive },
+						{ data: balance },
+						{ data: amount },
+						{ data: date }
+						
+                    ]
+            
+        });
+
+
+        el_up.innerHTML = "Click on the button to create " 
+                +   "the table from the JSON data.<br><br>" 
+                + JSON.stringify(list[0]) + "<br>"  
+                + JSON.stringify(list[1]) + "<br>" 
+                + JSON.stringify(list[2]);    
+              
+        function constructTable(selector) { 
+              
+            // Getting the all column names 
+            var cols = Headers(list, selector);   
+   
+            // Traversing the JSON data 
+            for (var i = 0; i < list.length; i++) { 
+                var row = $('<tr/>');    
+                for (var colIndex = 0; colIndex < cols.length; colIndex++) 
+                { 
+                    var val = list[i][cols[colIndex]]; 
+                      
+                    // If there is any key, which is matching 
+                    // with the column name 
+                    if (val == null) val = "";   
+                        row.append($('<td/>').html(val)); 
+                } 
+                  
+                // Adding each row to the table 
+                $(selector).append(row); 
+            } 
+        } 
+          
+        function Headers(list, selector) { 
+            var columns = []; 
+            var header = $('<tr/>'); 
+              
+            for (var i = 0; i < list.length; i++) { 
+                var row = list[i]; 
+                  
+                for (var k in row) { 
+                    if ($.inArray(k, columns) == -1) { 
+                        columns.push(k); 
+                          
+                        // Creating the header 
+                        header.append($('<th/>').html(k)); 
+                    } 
+                } 
+            } 
+              
+            // Appending the header to the table 
+            $(selector).append(header); 
+                return columns; 
+        }        
+    });
+
+
+
+
+
+
+        
+</script>
+ 
+</html> 
