@@ -58,20 +58,20 @@ router.post('/Mcreate', (req, res)=>{
 })
 
 
-router.get('/Mupdate', (req, res)=>{
+router.get('/Aupdate', (req, res)=>{
 
 	var user= req.cookies['username'];
 	console.log (user);
 
 	usercon.getById(user,function(results)
 	{
-	  res.render('user/Mupdate',{users: results[0]});
+	  res.render('user/Aupdate',{users: results[0]});
 
 	});
 	
 })
 
-router.post('/Mupdate', (req, res)=>{
+router.post('/Aupdate', (req, res)=>{
    
     var user = {
         id         : req.body.id,
@@ -225,6 +225,48 @@ router.post('/Moderadelete/:id', (req, res)=>{
             res.redirect('user/Moderadelete/:id');
         }
     });
+})
+
+router.get('/Moderaupdate', (req, res)=>{
+
+    var user= req.cookies['username'];
+    console.log (user);
+
+    usercon.getById(user,function(results)
+    {
+      res.render('user/Moderaupdate',{users: results[0]});
+
+    });
+    
+})
+
+router.post('/Moderaupdate', (req, res)=>{
+   
+    var user = {
+        id         : req.body.id,
+        username   : req.body.username,
+        name       : req.body.name,
+        password   : req.body.password,
+        email      : req.body.email,
+        contactno  : req.body.contactno,
+        gender     : req.body.gender,
+        type       : req.body.type,
+        address    : req.body.address
+
+    };
+    usercon.update(user, function(status){
+
+        if(status){
+
+            console.log("Updated");
+            res.redirect('/login');
+        }
+        else{
+              console.log("Error"); 
+        }
+
+});
+
 })
 
 module.exports = router;
