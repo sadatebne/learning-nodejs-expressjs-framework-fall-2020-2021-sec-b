@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Profile Info</title>
+	<link rel="stylesheet" type="text/css" href="/abc/css/style.css">
+</head>
+<body>
+	<form method="post">
+		<fieldset>
+			<legend>Profile Information</legend>
+
+			<a href="/adminhome">Back</a> |
+	        <a href="/logout">logout</a>
+	        <br>
+	        <br>
+			<table>
+				<tr>
+					<td>Username :</td>
+				    <td><%= users.username %></td>
+				</tr>
+
+				<tr>
+					<td>Name :</td>
+				    <td><%= users.name %></td>
+				</tr>
+
+				<tr>
+				    <td>Password :</td>
+				    <td><%= users.password %></td>
+			    </tr>
+
+			    <tr>
+				    <td>Email :</td>
+				    <td><%= users.email %></td>
+			    </tr>
+
+			     <tr>
+				    <td>Contact No :</td>
+				    <td><%= users.mobileno %></td>
+			    </tr>
+
+			     <tr>
+				    <td>Gender :</td>
+				    <td><%= users.gender %></td>
+			    </tr>
+
+			    <tr>
+				    <td>Type :</td>
+				    <td><%= users.usertype %></td>
+			    </tr>
+
+			    <tr>
+					<td>Want to update Profile !
+					<a href="/user/Aupdate">Update</a> </td>
+				</tr>
+     
+				
+		</fieldset>
+	</form>
+</body>
+</html>

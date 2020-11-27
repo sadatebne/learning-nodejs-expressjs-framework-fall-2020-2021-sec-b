@@ -1,13 +1,18 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>admin creation</title>
+	<title>user creation</title>
 </head>
 <body>
 	<form method="post">
 		<fieldset>
-			<legend>Admin Registration</legend>
+			<legend>User Create</legend>
+			<a href="/adminhome">Back</a> |
+	        <a href="/logout">logout</a>
+	        <br>
+	        <br>
 			<table>
+
 				<tr>
 					<td>Username</td>
 					<td><input type="text" name="username"></td>
@@ -16,6 +21,7 @@
 					<td>Name</td>
 					<td><input type="text" name="name"></td>
 				</tr>
+
 				<tr>
 					<td>Password</td>
 					<td><input type="password" name="password"></td>
@@ -39,10 +45,6 @@
 				<tr>
 					<td></td>
 					<td><input type="submit" name="submit" value="Create"></td>
-				</tr>
-				<tr>
-					<td>Already have a account !
-					<a href="/login">login</a> </td>
 				</tr>
 			</table>
 		</fieldset>
